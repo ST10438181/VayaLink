@@ -1,0 +1,9 @@
+<resources>
+    <color name="vaya_orange">#F5A623</color>
+    <color name="vaya_green">#1E7A4C</color>
+    <color name="vaya_bg_dark">#101423</color>
+    <color name="vaya_card_dark">#1B2036</color>
+    <color name="vaya_text_light">#F5F6FA</color>
+    <color name="vaya_text_muted">#9AA0B4</color>
+    <color name="vaya_danger">#E0473E</color>
+</resources>

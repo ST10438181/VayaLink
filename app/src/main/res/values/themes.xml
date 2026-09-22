@@ -1,0 +1,22 @@
+<resources>
+    <style name="Theme.VayaLink" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/vaya_orange</item>
+        <item name="colorPrimaryDark">@color/vaya_bg_dark</item>
+        <item name="colorAccent">@color/vaya_green</item>
+        <item name="android:windowBackground">@color/vaya_bg_dark</item>
+    </style>
+
+    <style name="Theme.VayaLink.Splash" parent="Theme.VayaLink">
+        <item name="android:windowBackground">@color/vaya_bg_dark</item>
+    </style>
+
+    <style name="HomeTile" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:layout_margin">6dp</item>
+        <item name="backgroundTint">@color/vaya_card_dark</item>
+        <item name="android:textColor">@color/vaya_text_light</item>
+        <item name="cornerRadius">16dp</item>
+    </style>
+</resources>
