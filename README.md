@@ -1,110 +1,110 @@
-# VayaLink — Android Prototype 
+# VayaLink
 
-This is a working Kotlin/Android Studio project implementing the VayaLink
-prototype described in my Planning & Design document. It is built as a
-standard Gradle project — open the `VayaLink/` folder directly in Android
-Studio (Hedgehog or later).
+VayaLink is a mobile app prototype built to close the information gap in
+South Africa's minibus taxi industry — giving commuters real-time route
+information, fare estimates, live alerts, and a way to report incidents,
+in one place.
 
-## What this prototype demonstrates
+<!-- Add a screenshot of your home screen here once you've run the app, e.g.: -->
+<!-- ![Home screen](docs/screenshots/home.png) -->
 
-| Requirement | Where it lives |
-|---|---|
-| **RESTful API in an Android app** | `data/remote/ApiService.kt` + `RetrofitClient.kt` — GET `/routes`, GET `/routes/{id}`, GET `/alerts`, POST `/reports` |
-| **External library** | Retrofit + OkHttp + Gson (networking/JSON), and Room (offline cache) |
-| **Appropriate SDK** | Firebase Authentication (register/login/logout/password change) + Firestore (profile) |
-| **Detailed unit testing** | `app/src/test/java/com/vayalink/app/` — `FareCalculatorTest`, `ValidationUtilsTest`, `RouteRepositoryTest`, `ReportRepositoryTest` (JUnit + Mockito + coroutines-test) |
+**Video demonstration:** _[add your video link here once recorded]_
 
-## Features included 
+---
 
-1. Register / login with Firebase Auth — passwords are hashed and stored by
-   Firebase, never by the app (FR1–FR5).
-2. Settings: change password, preferred language (EN/ZU), notifications,
-   data-saver mode (FR6–FR10).
-3. Journey planner — searches routes by origin/destination against your
-   hosted REST API, shows fare + travel-time estimates (FR11–FR15).
-4. Live alerts — pulls strike/traffic/delay/safety alerts from the same API
-   (FR17, FR19).
-5. Report incident — submits driver-behaviour or safety reports via
-   `POST /reports` (FR23, FR24).
-6. Saved routes — cached offline with Room so they're visible without a
-   connection (FR8, FR20–22, NFR8).
+## Purpose
 
-## Before build
+An estimated 70% of South African public transport commuters rely on
+minibus taxis, but there is no single, reliable source of information
+about routes, fares, delays, or safety incidents. Existing solutions each
+solve part of the problem — MiTaxi has industry backing but no real-time
+tracking, GoTo has real-time tracking but almost no coverage, and the
+George Passenger Application does multi-modal planning but only within
+one town. VayaLink's prototype focuses on the overlap these apps miss:
+searchable routes with fare/time estimates, live alerts, and
+crowdsourced/driver reporting, backed by a real hosted REST API and
+Firebase Authentication.
 
-1. **Firebase**: create a Firebase project, add an Android app with
-   applicationId `com.vayalink.app`, enable **Authentication → Email/Password**
-   and **Cloud Firestore**, then download the real `google-services.json` and
-   replace the placeholder at `app/google-services.json`.
+_(Full research behind this decision — comparing MiTaxi, GoTo, and the
+George Passenger Application — is available in the project's Planning &
+Design document; summarise or link it here if you're including it in the
+repo.)_
 
-2. **Hosted REST API**: this prototype needs *your own* hosted REST API
-   (per the assignment brief, "connect to a REST API you create... or any
-   that fits your idea... must be hosted"). The quickest option for a
-   prototype is a free [mockapi.io](https://mockapi.io) project with three
-   resources — `routes`, `alerts`, `reports` — matching the field names in
-   `data/model/Route.kt`, `Alert.kt` and `IncidentReport.kt`. Once created,
-   update `BASE_URL` in `data/remote/RetrofitClient.kt` with your project's
-   URL. If you'd rather build your own backend (Node/Express, Firebase
-   Cloud Functions, etc.) instead, point `BASE_URL` at that instead — the
-   `ApiService` interface doesn't need to change as long as the endpoint
-   shapes match.
+## Design considerations
 
-3. Sync Gradle, then run on a device/emulator.
+- **Offline resilience.** Commuters often have inconsistent connectivity,
+  so saved routes are cached locally with Room and remain viewable without
+  a network connection.
+- **Low barrier to account creation.** Firebase Authentication handles
+  password hashing/salting server-side, so the app never stores or
+  transmits a plain password itself.
+- **Separation of concerns (MVVM).** UI (Activities), state/business logic
+  (ViewModels), and data access (Repositories) are kept in separate
+  layers so each piece can be tested and changed independently — see the
+  unit tests under `app/src/test`, which mock the network layer entirely.
+- **A single external REST API for both alerts and reports.** The
+  prototype's hosted API (mockapi.io) has a resource limit on its free
+  tier, so incident reports are posted into the same `alerts` resource
+  they're later read back from, rather than a separate one — a deliberate
+  simplification documented in `ApiService.kt` and `IncidentReport.kt`.
 
-## Unit tests
+## Architecture
 
-Run from Android Studio (right-click `app/src/test` → Run Tests) or:
+## Features implemented in this prototype
 
-```
-./gradlew testDebugUnitTest
-```
+- Register / log in / log out via Firebase Authentication
+- Change password, set preferred language and notification preferences
+- Search taxi routes by origin/destination against the hosted REST API,
+  with fare and travel-time estimates
+- View live alerts (traffic, strikes, delays, safety, road closures)
+- Report an incident, which is submitted to the hosted API
+- Save routes offline for viewing without a connection
 
-These test pure logic (fare calculation, validation rules) and repository
-behaviour with the network layer mocked out, so they run instantly with no
-device, emulator, or live network connection required — exactly what your
-markers will want to see for "detailed unit testing."
+## Tech stack
 
-## Notes for your demonstration video
+- Kotlin, MVVM, Coroutines
+- Retrofit + OkHttp + Gson — consumes the hosted RESTful API
+- Room — offline cache for saved routes
+- Firebase Authentication + Firestore — the app's SDK integration
+- JUnit + Mockito + kotlinx-coroutines-test — unit tests
 
-- Show registration and login, and mention that Firebase Authentication
-  hashes/encrypts the password server-side.
-- Show changing a setting (e.g. toggling notifications or changing the
-  password) and log back in to prove it persisted.
-- Show the Journey Planner making a live call to your hosted API (you can
-  show the API's dashboard/data alongside the app to prove it's really
-  hosted and not hard-coded).
-- Show Live Alerts and Report Incident hitting the same API.
-- Voice-over should call out where each Learning Unit 1/2 requirement is
-  being demonstrated (REST API call, external library, SDK, and — separately,
-  in your written submission — the unit test results).
+## Use of GitHub and GitHub Actions
 
-## Project structure
+This repository uses GitHub for version control, with commits made
+incrementally as features were built (see commit history). A GitHub
+Actions workflow is defined at `.github/workflows/android-ci.yml` and
+runs automatically on every push and pull request to `main`. It:
 
-```
-app/src/main/java/com/vayalink/app/
-├── data/
-│   ├── model/        Route, Alert, IncidentReport, User
-│   ├── remote/        ApiService (Retrofit), RetrofitClient
-│   ├── local/         Room entity, DAO, database
-│   └── repository/    AuthRepository, RouteRepository, AlertRepository, ReportRepository
-├── viewmodel/         AuthViewModel, JourneyViewModel, AlertsViewModel, ReportViewModel
-├── ui/
-│   ├── splash/ auth/ home/ journey/ alerts/ report/ savedroutes/ profile/
-│   └── adapter/       RecyclerView adapters
-└── util/              Resource, ValidationUtils, FareCalculator, SessionManager
+1. Checks out the repository
+2. Sets up JDK 17
+3. Runs the project's unit tests (`./gradlew testDebugUnitTest`)
+4. Runs Android Lint (`./gradlew lintDebug`)
+5. Builds a debug APK (`./gradlew assembleDebug`)
+6. Uploads the built APK as a downloadable workflow artifact
 
-app/src/test/java/com/vayalink/app/
-├── FareCalculatorTest.kt
-├── ValidationUtilsTest.kt
-├── RouteRepositoryTest.kt
-└── ReportRepositoryTest.kt
-```
+This means every change pushed to the repository is automatically
+verified to compile and pass its tests, without needing to build it
+locally first. You can see past runs under this repo's **Actions** tab.
 
-## Honesty note on scope
+## Setup
 
-This prototype deliberately keeps some things simple to stay buildable and
-demoable in the time you have: it does not implement live GPS-tracking of
-taxis (FR16/FR18), multi-taxi transfer planning (FR15), or the WhatsApp
-chatbot channel — the design document flags these as fine to defer to the
-final PoE submission. The four Learning Unit 1/2 marking criteria (REST API,
-external library, SDK, unit testing) and a working prototype UI covering
-several Part 1 features are fully implemented.
+1. Clone this repository and open the `VayaLink` folder in Android
+   Studio.
+2. **Firebase**: create a Firebase project, register an Android app with
+   package name `com.vayalink.app`, enable Authentication
+   (Email/Password) and Firestore, then download your own
+   `google-services.json` and place it in `app/google-services.json`
+   (this file is git-ignored and not included in the repo, since it's
+   project-specific and shouldn't be committed).
+3. **Hosted REST API**: this project talks to a hosted mockapi.io
+   project with `routes` and `alerts` resources. Update `BASE_URL` in
+   `app/src/main/java/com/vayalink/app/data/remote/RetrofitClient.kt`
+   with your own project's URL.
+4. Sync Gradle and run.
+
+## Running the tests
+Tests live in `app/src/test/java/com/vayalink/app/` and cover fare
+calculation, input validation, and repository logic with the network
+layer mocked out — see `FareCalculatorTest.kt`, `ValidationUtilsTest.kt`,
+`RouteRepositoryTest.kt`, and `ReportRepositoryTest.kt`.
+
