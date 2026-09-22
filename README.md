@@ -1,7 +1,7 @@
-# VayaLink — Android Prototype (Learning Units 1 & 2)
+# VayaLink — Android Prototype 
 
 This is a working Kotlin/Android Studio project implementing the VayaLink
-prototype described in your Planning & Design document. It is built as a
+prototype described in my Planning & Design document. It is built as a
 standard Gradle project — open the `VayaLink/` folder directly in Android
 Studio (Hedgehog or later).
 
@@ -14,7 +14,7 @@ Studio (Hedgehog or later).
 | **Appropriate SDK** | Firebase Authentication (register/login/logout/password change) + Firestore (profile) |
 | **Detailed unit testing** | `app/src/test/java/com/vayalink/app/` — `FareCalculatorTest`, `ValidationUtilsTest`, `RouteRepositoryTest`, `ReportRepositoryTest` (JUnit + Mockito + coroutines-test) |
 
-## Features included (from Part 1's rubric-weighted list)
+## Features included 
 
 1. Register / login with Firebase Auth — passwords are hashed and stored by
    Firebase, never by the app (FR1–FR5).
@@ -29,7 +29,7 @@ Studio (Hedgehog or later).
 6. Saved routes — cached offline with Room so they're visible without a
    connection (FR8, FR20–22, NFR8).
 
-## Before you build
+## Before build
 
 1. **Firebase**: create a Firebase project, add an Android app with
    applicationId `com.vayalink.app`, enable **Authentication → Email/Password**
