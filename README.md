@@ -5,10 +5,9 @@ South Africa's minibus taxi industry — giving commuters real-time route
 information, fare estimates, live alerts, and a way to report incidents,
 in one place.
 
-<!-- Add a screenshot of your home screen here once you've run the app, e.g.: -->
-<!-- ![Home screen](docs/screenshots/home.png) -->
 
-**Video demonstration:** _[add your video link here once recorded]_
+
+
 
 ---
 
@@ -25,10 +24,7 @@ searchable routes with fare/time estimates, live alerts, and
 crowdsourced/driver reporting, backed by a real hosted REST API and
 Firebase Authentication.
 
-_(Full research behind this decision — comparing MiTaxi, GoTo, and the
-George Passenger Application — is available in the project's Planning &
-Design document; summarise or link it here if you're including it in the
-repo.)_
+
 
 ## Design considerations
 
