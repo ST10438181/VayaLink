@@ -5,15 +5,7 @@ South Africa's minibus taxi industry — giving commuters real-time route
 information, fare estimates, live alerts, and a way to report incidents,
 in one place.
 
-<img width="420" height="752" alt="Screenshot 2026-09-23 112152" src="https://github.com/user-attachments/assets/b56b5d3f-25ae-4701-bfd0-ea1c779213dc" />
 
-
-
-
-
-
-
----
 
 ## Purpose
 
