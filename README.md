@@ -44,10 +44,14 @@ This is a working Kotlin/Android Studio project implementing the VayaLink protot
 
 3. Sync Gradle, then run on a physical device (as required by the brief).
 
-## Unit tests
+**unit test
 
 Run from Android Studio (right-click `app/src/test` → Run Tests) or:
+
+** project structure 
+
 app/src/main/java/com/vayalink/app/
+
 ├── data/
 │ ├── model/ Route, Alert, IncidentReport, User
 │ ├── remote/ ApiService (Retrofit), RetrofitClient
