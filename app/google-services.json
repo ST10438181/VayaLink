@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1051701267409",
+    "project_id": "vayalink-8f67b",
+    "storage_bucket": "vayalink-8f67b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051701267409:android:92da70ef3ce8f3fc472ef0",
+        "android_client_info": {
+          "package_name": "com.vayalink.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1051701267409-f5c2emkjul2nn7k03m4gfl9avrcsino0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vayalink.app",
+            "certificate_hash": "e839bc225a37669f5a8edec29384a5b167d77026"
+          }
+        },
+        {
+          "client_id": "1051701267409-vhjvhk00vnspv9leqkidt6ud8qcth74d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcrLSVjmQQLoLVTYTg3NGsN4lqq5vB7KU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1051701267409-vhjvhk00vnspv9leqkidt6ud8qcth74d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

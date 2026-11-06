@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
-            android:text="Log in to VayaLink"
+            android:text="@string/login_title"
             android:textColor="@color/vaya_text_light"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:hint="Email address"
+            android:hint="@string/email_hint"
             android:inputType="textEmailAddress"
             android:textColor="@color/vaya_text_light"
             android:textColorHint="@color/vaya_text_muted" />
@@ -34,10 +34,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Password"
+            android:hint="@string/password_hint"
             android:inputType="textPassword"
             android:textColor="@color/vaya_text_light"
-            android:textColorHint="@color/vaya_text_muted" />
+            android:textColorHint="@color/vaya_text_muted"/>
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -53,9 +53,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:backgroundTint="@color/vaya_orange"
-            android:text="Log In"
+            android:text="@string/btn_login"
             android:textColor="@color/vaya_bg_dark"
             android:textStyle="bold" />
+
+        <!-- Google Sign In Button -->
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/btnGoogleSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" />
 
         <TextView
             android:id="@+id/tvCreateAccount"
@@ -64,7 +71,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:padding="8dp"
-            android:text="Create an account"
+            android:text="@string/btn_create_account"
             android:textColor="@color/vaya_green" />
 
     </LinearLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VayaLink</string>
+
+    <!-- Login Screen Translations (isiZulu) -->
+    <string name="login_title">Ngena ku-VayaLink</string>
+    <string name="email_hint">Ikheli le-imeyili</string>
+    <string name="password_hint">Iphasiwedi</string>
+    <string name="btn_login">Ngena</string>
+    <string name="btn_create_account">Dala i-akhawunti</string>
+</resources>

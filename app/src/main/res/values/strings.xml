@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">VayaLink</string>
     <string name="tagline">Your route. Your journey. Your ride.</string>
+    <string name="default_web_client_id">1051701267409-vhjvhk00vnspv9leqkidt6ud8qcth74d.apps.googleusercontent.com</string>
+    <string name="login_title">Log in to VayaLink</string>
+    <string name="email_hint">Email address</string>
+    <string name="password_hint">Password</string>
+    <string name="btn_login">Log In</string>
+    <string name="btn_create_account">Create an account</string>
 </resources>
